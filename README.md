@@ -26,4 +26,4 @@
 
 ### :wrench:开发
 
-- [Git](Develop/gut.md)
+- [Git](Develop/git.md)
