@@ -1,5 +1,5 @@
-> \* Golang CHEATSHEET (中文速查表) - by chlins (created on 2020/08/18)  
-> \* Version: 1, Last Modified: 2020/08/18 22:06  
+> Golang CHEATSHEET (中文速查表) - by chlins (created on 2020/08/18)  
+> Version: 2, Last Modified: 2020/08/19 00:06  
 > https://github.com/LLiuHuan/cn-awesome-cheatsheets
 
 ### Go 编译器命令
