@@ -9,4 +9,4 @@
 
 ### :page_with_curl:编程语言
 
-- [Go](languages/golang.go)
+- [Go](languages/golang.md)
