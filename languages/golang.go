@@ -79,7 +79,7 @@ var c float64
 // 注意：使用var声明过的变量不可再使用 := 赋值
 a = 2
 const d = 1                                         // 常量
-var (												// 声明多个变量
+var (                                               // 声明多个变量
 	e = 1
 	f = 2
 	g = 3
@@ -142,10 +142,10 @@ default:
 // 以func关键字声明
 func test() {}
 
-f := func() {println("Lambdas function")}     	// 匿名函数
+f := func() {println("Lambdas function")}        // 匿名函数
 f()
 
-func get() (a,b string) {                    	// 函数多返回值
+func get() (a,b string) {                        // 函数多返回值
     return "a", "b"
 }
 a, b := get()
@@ -158,11 +158,11 @@ a, b := get()
  ******************************************************************************/
 // golang中没有class只有struct
 type People struct {
-  Age int                                  		// 大写开头的变量在包外可以访问
-  name string                              		// 小写开头的变量仅可在本包内访问
+  Age int                                       // 大写开头的变量在包外可以访问
+  name string                                   // 小写开头的变量仅可在本包内访问
 }
-p1 := People{25, "Kaven"}                 		// 必须按照结构体内部定义的顺序
-p2 := People{name: "Kaven", age: 25}      		// 若不按顺序则需要指定字段
+p1 := People{25, "Kaven"}                       // 必须按照结构体内部定义的顺序
+p2 := People{name: "Kaven", age: 25}            // 若不按顺序则需要指定字段
 
 // 也可以先不赋值
 p3 := new(People)
@@ -177,13 +177,13 @@ p3.name = "Kaven"
 type Foo struct {
   a int
 }
-                                        		// 值接收者
+                                                // 值接收者
 func (f Foo) test() {
-  f.a = 1                              			// 不会改变原来的值
+  f.a = 1                                       // 不会改变原来的值
 }
-                                      			// 指针接收者
+                                                // 指针接收者
 func (f *Foo) test() {
-  f.a = 1                            			// 会改变原值
+  f.a = 1                                       // 会改变原值
 }
 
 
@@ -194,15 +194,15 @@ func (f *Foo) test() {
 go func() {
     time.Sleep(10 * time.Second)
     println("hello")
-}()                                				// 不会阻塞代码的运行 代码会直接向下运行
+}()                                              // 不会阻塞代码的运行 代码会直接向下运行
 // channel 通道
 c := make(chan int)
 // 两个协程间可以通过chan通信
-go func() {c <- 1}()              				// 此时c会被阻塞 直到值被取走前都不可在塞入新值
+go func() {c <- 1}()                            // 此时c会被阻塞 直到值被取走前都不可在塞入新值
 go func() {println(<-c)}()
 // 带缓存的channel
 bc := make(chan int, 2)
-go func() {c <- 1; c <-2}()      				// c中可以存储声明时所定义的缓存大小的数据，这里是2个
+go func() {c <- 1; c <-2}()                     // c中可以存储声明时所定义的缓存大小的数据，这里是2个
 go func() {println(<-c)}()
 
 
@@ -212,12 +212,12 @@ go func() {println(<-c)}()
  ******************************************************************************/
 // go的接口为鸭子类型，即只要你实现了接口中的方法就实现了该接口
 type Reader interface {
-    Reading()                  					// 仅需实现Reading方法就实现了该接口
+    Reading()                                  // 仅需实现Reading方法就实现了该接口
 }
 
 type As struct {}
-func (a As) Reading() {}      					// 实现了Reader接口
+func (a As) Reading() {}                       // 实现了Reader接口
 
 type Bs struct {}
-func (b Bs) Reading() {}      					// 也实现了Reader接口
+func (b Bs) Reading() {}                       // 也实现了Reader接口
 func (b Bs) Closing() {}
