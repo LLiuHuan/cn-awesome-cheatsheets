@@ -1,6 +1,6 @@
-> \# BASH CHEATSHEET (中文速查表) - by skywind (created on 2020/08/19)  
-> \# Version: 1, Last Modified: 2020/08/19 00:05  
-> \# https://github.com/LLiuHuan/cn-awesome-cheatsheets
+> BASH CHEATSHEET (中文速查表) - by skywind (created on 2020/08/19)  
+> Version: 1, Last Modified: 2020/08/19 00:05  
+> https://github.com/LLiuHuan/cn-awesome-cheatsheets
 
 ## 基础命令
 
