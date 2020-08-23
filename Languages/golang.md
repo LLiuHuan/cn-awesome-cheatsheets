@@ -190,16 +190,26 @@ apply(add, 3, 4)
 ```golang
 // golang中没有class只有struct
 type People struct {
-  Age int                                       // 大写开头的变量在包外可以访问
-  name string                                   // 小写开头的变量仅可在本包内访问
+  Age int                                       // 大大写开头的变量在包外可以访问
+  name string                                   // 小小写开头的变量仅可在本包内访问
 }
 p1 := People{25, "Kaven"}                       // 必须按照结构体内部定义的顺序
 p2 := People{name: "Kaven", age: 25}            // 若不按顺序则需要指定字段
 
 // 也可以先不赋值
+
 p3 := new(People)
 p3.Age = 25
 p3.name = "Kaven"
+
+var p4 People
+p4.Age = 18
+
+// 函数体方法
+func (node *People) print(){
+    fmt.Println(node.Age, " ")
+}
+p4.print()
 ```
 
 ### 方法
@@ -217,6 +227,14 @@ func (f Foo) test() {
 func (f *Foo) test() {
   f.a = 1                                       // 会改变原值
 }
+```
+
+### 封装
+
+```golang
+// 首字母大写：public
+// 首字母小写：private
+
 ```
 
 ### go 协程
