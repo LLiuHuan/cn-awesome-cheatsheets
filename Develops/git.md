@@ -32,7 +32,8 @@ git clone <remote address>
 ### 工作流
 
 你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 `工作目录`，它持有实际文件；第二个是 `缓存区（Index）`，它像个缓存区域，临时保存你的改动；最后是 `HEAD`，指向你最近一次提交后的结果。
-![Git 三棵树](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/45d89981-9df0-4084-be81-88782e59dd8a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200819%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200819T081311Z&X-Amz-Expires=86400&X-Amz-Signature=ea76026960488ba3a0684de679c5eaf2c0502d0d7867341952b434d3ac5bb37f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+![Git 三棵树](../Images/Develops/Git三棵树.png)
 
 ### 提交修改
 
@@ -58,7 +59,7 @@ git remote add origin <server>
 
 ### 分支
 
-![Git 分支](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e3d32396-bab8-4038-8367-0078029b9c9b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200819%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200819T082006Z&X-Amz-Expires=86400&X-Amz-Signature=57507acf6afacfad0f0f6fa905e1d051fad34a2220bc074b3a6047f8ff195455&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![Git 分支](../Images/Develops/Git分支.png)
 
 ```bash
 # 分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。
