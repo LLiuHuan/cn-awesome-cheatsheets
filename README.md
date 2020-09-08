@@ -30,4 +30,4 @@
 
 ### :white_check_mark:发布
 
-
+- [Python](Release/Python.md)
