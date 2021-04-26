@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2020-12-23 00:08:19
- * @LastEditTime: 2021-04-26 15:37:23
+ * @LastEditTime: 2021-04-26 16:26:11
  * @LastEditors: LLiuHuan
 -->
 # cn-awesome-cheatsheets
@@ -34,7 +34,7 @@
 ### :wrench:开发
 
 - [Git](Develops/git.md)
-- [Nginx(等待更新)](Release/Nginx.md)
+- [Nginx(等待更新)](Develops/Nginx.md)
 
 ### :white_check_mark:发布
 
