@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: LLiuHuan
+ * @Date: 2020-12-23 00:08:19
+ * @LastEditTime: 2021-04-26 15:37:23
+ * @LastEditors: LLiuHuan
+-->
 # cn-awesome-cheatsheets
 
 ### 中文速查表
@@ -12,7 +19,7 @@
 
 ## :zap:内容索引
 
-### :page_with_curl:编程语言
+### :page_with_curl:语言
 
 - [Go](Languages/golang.md)
 - [Bash](Languages/bash.md)
@@ -20,18 +27,24 @@
 - [VimScript](Languages/vimScript.md)
 - [Python](Languages/python.md)
 
-### :pencil:文本编辑
+### :pencil:文本
 
 - [Vim](TextEditings/vim.md)
 
 ### :wrench:开发
 
 - [Git](Develops/git.md)
+- [Nginx(等待更新)](Release/Nginx.md)
 
 ### :white_check_mark:发布
 
 - [Python](Release/Python.md)
+- [Golang](Release/Golang.md)
 
 ### 🗃️数据库
 
 - [MySql](DataBase/MySql.md)
+
+### 容器化(等待更新)
+
+- [Docker](Container/Docker.md)
