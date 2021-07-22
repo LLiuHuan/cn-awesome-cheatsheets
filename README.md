@@ -26,6 +26,7 @@
 - [PHP](Languages/php.md)
 - [VimScript](Languages/vimScript.md)
 - [Python](Languages/python.md)
+- [Shell](Languages/shell.md)
 
 ### :pencil:文本
 
