@@ -27,7 +27,7 @@
 - [VimScript](Languages/vimScript.md)
 - [Python](Languages/python.md)
 - [Shell](Languages/shell.md)
-- [Dart(更新中|内容较多)](Languages/dart.md)
+- [Dart](Languages/dart.md)
 
 ### :pencil:文本
 
