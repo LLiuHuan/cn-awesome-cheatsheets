@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2020-12-23 00:08:19
- * @LastEditTime: 2021-04-26 16:26:11
+ * @LastEditTime: 2022-03-25 16:31:03
  * @LastEditors: LLiuHuan
 -->
 # cn-awesome-cheatsheets
@@ -21,6 +21,9 @@
 
 ### :page_with_curl:语言
 
+<details>
+<summary>View cheatsheets</summary>
+
 - [Golang](Languages/golang.md)
 - [Bash](Languages/bash.md)
 - [PHP](Languages/php.md)
@@ -28,6 +31,9 @@
 - [Python](Languages/python.md)
 - [Shell](Languages/shell.md)
 - [Dart](Languages/dart.md)
+- [Lua](Languages/lua.md)
+
+</details>
 
 ### :pencil:文本
 
