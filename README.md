@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2020-12-23 00:08:19
- * @LastEditTime: 2022-03-25 16:31:03
+ * @LastEditTime: 2022-03-28 09:19:28
  * @LastEditors: LLiuHuan
 -->
 # cn-awesome-cheatsheets
@@ -53,6 +53,7 @@
 
 - [MySql](DataBase/MySql.md)
 - [MongoDB(更新中)](DataBase/MongoDB.md)
+- [Redis](DataBase/Redis.md)
 
 ### :droplet:容器化(等待更新)
 
