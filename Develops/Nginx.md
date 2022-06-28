@@ -2,15 +2,233 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-04-26 15:14:49
- * @LastEditTime: 2021-05-06 17:13:17
+ * @LastEditTime: 2022-06-28 21:52:09
  * @LastEditors: LLiuHuan
 -->
 ###########################################  
-Nginx 基础  
+#Nginx 基础  
+#文档：https://nginx.org/en/docs/
 ###########################################
 
+```conf
+sudo nginx -t # 检查语法
+sudo systemctl status nginx # nginx当前状态
+sudo systemctl reload nginx # 重新加载nginx
+sudo systemctl restart nginx   # 重启nginx
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/ # 链接网站
+```
 
-## 反向代理  
+### 常规设置
+
+```conf
+# 端口
+
+server {
+  #使用HTTP协议
+  listen 80 ;
+  
+  #使用 HTTPS 协议
+  listen 443 ssl ;
+  
+  #使用 IPv6 监听 80 端口
+  listen [::]:80 ;
+  
+  #使用 **only** IPv6 监听端口 80
+  listen [::]:80 ipv6only=on ;
+}
+```
+
+```conf
+# 域名
+
+server {
+  # 监听 example.com
+  server_name example.com;
+  
+  # 监听多个域名
+  server_name example.com www.example.com;
+  
+  # 监听所有子域名
+  server_name *.example.com;
+  
+  # 监听所有顶级域名
+  server_name example.*;
+  
+  # 监听未指定的主机名
+  server_name "";
+}
+```
+
+### 服务文件
+
+```conf
+#静态资源
+
+server {
+    listen 80 ;
+    server_name example.com ;
+
+    root /path/to/website ；
+    #root /www/data/ 例如
+
+    # 如果里面没有'root'，它会寻找 /www/data/index.html
+    location / {
+    }
+
+    # 如果里面没有'root'，它会寻找/www/data/images/index.html
+    location /images/ {
+    }
+
+    # 因为里面有'root'，它会寻找/www/media/videos/index.html
+    location /videos/ {
+        root /www/media;
+    }
+}
+```
+
+### 重定向
+
+```conf
+# 301 永久
+
+server {
+    #将 www.example.com 重定向到 example.com
+    listen 80;
+    server_name www.example.com;
+    return 301 http://example.com$request_uri;
+}
+
+server {
+    #重定向http到https
+    listen 80;
+    server_name example.com;
+    return 301 https://example.com$request_uri;
+}
+
+```
+
+```conf
+# 302 临时
+
+server {
+  listen 80;
+  server_name yourdomain.com;
+  return 302 http://otherdomain.com;
+}
+```
+
+
+### 反向代理  
+
+```conf
+# 适用于 Node.js、Streamlit、Jupyter 等
+
+# 基本
+
+server {
+  listen 80;
+  server_name example.com;
+  
+  location / {
+    proxy_pass http://0.0.0.0:3000;
+    #其中 0.0.0.0:3000 是绑定在 0.0.0.0 端口 3000 上的 Node.js 服务器
+  }
+}
+
+# 基本 + (upstream)
+
+upstream node_js {
+  server 0.0.0.0:3000;
+  #其中 0.0.0.0:3000 是绑定在 0.0.0.0 端口 3000 上的 Node.js 服务器
+}
+
+server {
+  listen 80;
+  server_name example.com;
+  
+  location / {
+    proxy_pass http://node_js;
+  }
+}
+
+# 升级的连接（对于支持 WebSockets 的应用程序很有用）
+
+upstream node_js {
+  server 0.0.0.0:3000;
+}
+
+server {
+  listen 80;
+  server_name example.com;
+  
+  location / {
+    proxy_pass http://node_js;
+    proxy_redirect off;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    }
+}
+```
+
+### HTTPS
+
+```conf
+# 大多数 SSL 选项取决于您的应用程序做什么或需要什么
+
+server {
+    listen 443 ssl http2;
+    server_name example.com;
+
+    ssl on;
+
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/privkey.pem;
+
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    ssl_trusted_certificate /path/to/fullchain.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    add_header Strict-Transport-Security max-age=15768000;
+}
+
+# 永久重定向到 HTTPS 安全域
+
+server {
+  listen 80;
+  server_name yourdomain.com;
+  return 301 https://$host$request_uri;
+}
+
+# 您可以使用 lets-encrypt 轻松保护您的网站/应用程序。
+# 文档： https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html
+```
+
+### 负载均衡
+
+```conf
+# 对于在多个实例中运行的大型应用程序很有用。以下示例用于反向代理
+upstream node_js {
+  server 0.0.0.0:3000;
+  server 0.0.0.0:4000;
+  server 127.155.142.421;
+}
+
+server {
+  listen 80;
+  server_name example.com;
+  
+  location / {
+    proxy_pass http://node_js;
+  }
+}
+```
+
+> 其他，之前暂存
 ### proxy_cache 
 - proxy_cache  
   语法：proxy_cache zone|off

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2020-12-23 00:08:19
- * @LastEditTime: 2022-03-28 09:19:28
+ * @LastEditTime: 2022-06-28 22:03:54
  * @LastEditors: LLiuHuan
 -->
 # cn-awesome-cheatsheets
@@ -42,7 +42,7 @@
 ### :wrench:开发
 
 - [Git](Develops/git.md)
-- [Nginx(更新中)](Develops/Nginx.md)
+- [Nginx](Develops/Nginx.md)
 
 ### :white_check_mark:发布
 
@@ -57,7 +57,7 @@
 
 ### :droplet:容器化(等待更新)
 
-- [Docker(等待更新)](Container/Docker.md)
+- [Docker](Container/Docker.md)
 - [K8s(等待更新)](Container/K8s.md)
 
 ### 框架(等待更新)
