@@ -2,13 +2,14 @@
  * @Description: 
  * @Author: LLiuHuan
  * @Date: 2021-04-26 15:14:49
- * @LastEditTime: 2022-06-28 21:52:09
+ * @LastEditTime: 2022-06-28 22:13:43
  * @LastEditors: LLiuHuan
 -->
-###########################################  
-#Nginx 基础  
-#文档：https://nginx.org/en/docs/
-###########################################
+ 
+### Nginx 基础  
+
+> 文档：https://nginx.org/en/docs/
+
 
 ```conf
 sudo nginx -t # 检查语法
@@ -272,7 +273,7 @@ server {
   max_size设置硬盘中最多可以缓存多少数据，当到达该数值时，nginx会删除最少访问的数据。
 
 - 示例：
-  ```
+  ```conf
   proxy_cache_path /data/nginx_cache/ levels=1:2 keys_zone=my_zone:10m inactive=300s max_size=5g;
 
   proxy_cache my_zone;
@@ -280,7 +281,7 @@ server {
 ### proxy_pass 
 - proxy_pass  
   在nginx中配置proxy_pass时，如果是按照^~匹配路径时,要注意proxy_pass后的url最后的/,当加上了/，相当于是绝对根路径，则nginx不会把location中匹配的路径部分代理走;如果没有/，则会把匹配的路径部分也给代理走。
-  ```
+  ```conf
   location ^~ /static/
   {
   proxy_cache my_cache;
@@ -292,7 +293,7 @@ server {
   会被代理成http://xxx.com/test.html
 
   而如果这么配置
-  ```
+  ```conf
   location ^~ /static/
   {
   proxy_cache my_cache;
@@ -303,7 +304,7 @@ server {
   则会被代理到http://xxx.com/static/test.htm
 
   当然，我们可以用如下的rewrite来实现/的功能
-  ```
+  ```conf
   location ^~ /static/
   {
   proxy_cache my_cache;
@@ -314,7 +315,7 @@ server {
   ```
 
 - 示例：
-  ```
+  ```conf
   # 示例转自：https://www.jianshu.com/p/b010c9302cd0
   server {
     listen      80;
@@ -335,7 +336,7 @@ server {
     location ^~ /testb/ {
         proxy_pass http://127.0.0.1:8801/;
     }
- 
+
     # 情形C
     # 下面这段location是正确的
     location ~ /testc {
@@ -376,7 +377,7 @@ server {
         rewrite    /namea/([^/]+) /yongfu?namea=$1 break;
         proxy_pass http://127.0.0.1:8801;
     }
- 
+
     # 情形G
     # 访问 http://www.test.com/nameb/eee
     # 后端的request_uri为: /yongfu?nameb=eee
@@ -384,28 +385,26 @@ server {
         rewrite    /nameb/([^/]+) /yongfu?nameb=$1 break;
         proxy_pass http://127.0.0.1:8801/;
     }
- 
-    access_log /data/logs/www/www.test.com.log;
-}
- 
-server {
-    listen      8801;
-    server_name www.test.com;
-    
-    root        /data/www/test;
-    index       index.php index.html;
- 
-    rewrite ^(.*)$ /test.php?u=$1 last;
- 
-    location ~ \.php$ {
-        try_files $uri =404;
-        fastcgi_pass unix:/tmp/php-cgi.sock;
-        fastcgi_index index.php;
-        include fastcgi.conf;
-    }
- 
-    access_log /data/logs/www/www.test.com.8801.log;
-}
- 
 
-  ```
+    access_log /data/logs/www/www.test.com.log;
+  }
+```
+
+server {
+  listen      8801;
+  server_name www.test.com;
+
+  root        /data/www/test;
+  index       index.php index.html;
+
+  rewrite ^(.*)$ /test.php?u=$1 last;
+
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_pass unix:/tmp/php-cgi.sock;
+    fastcgi_index index.php;
+    include fastcgi.conf;
+  }
+
+  access_log /data/logs/www/www.test.com.8801.log;
+}
